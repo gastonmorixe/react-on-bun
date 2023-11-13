@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SSR REACT HTMX on Rails</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application", defer: true %> <%# "data-turbo-track": "reload", %>
+  </head>
+
+  <body>
+    <!-- erb-starts -->
+    <%= yield %>
+    <!-- erb-ends -->
+
+    <!-- react-starts -->
+    <!-- <div id="react-app"><main><div data-rendered="client">Client Content: N/A</div><div data-rendered="server"><p style="color: red">hola como estan</p></div></main></div> -->
+    <!-- react-ends -->
+
+    <!-- bun-ssr-starts -->
+    <div id="react-app"><%= ssr_render("app/javascript/application-server.js") do %><p style='color: red'>hola amigos this is from ERB!</p><% end %></div>
+    <!-- bun-ssr-ends -->
+  </body>
+</html>
