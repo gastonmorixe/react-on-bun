@@ -1,7 +1,9 @@
 import * as React from "react"
 
+import { Logger } from "./Logger"
+
 const SSRBlock = (props: { html: string | null }) => {
-  console.log("[SSRBlock] render", { props })
+  Logger.debug("[SSRBlock] render", { props })
 
   return (
     <div
@@ -26,7 +28,7 @@ const ClientContent = (props) => {
     }
   }, [])
 
-  console.log("[ClientContent] render", { props, time })
+  Logger.debug("[ClientContent] render", { props, time })
 
   return <div data-rendered="client">{`Client Content: ${String(time)}`}</div>
 }
@@ -35,7 +37,7 @@ export const App = (props: {
   // null if is SSR
   ssrContent: string | null
 }) => {
-  console.log("[App] render", { props })
+  Logger.debug("[App] render", { props })
 
   return (
     <main>

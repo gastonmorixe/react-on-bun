@@ -1,12 +1,16 @@
 // SERVER APP
 
+import { Logger } from "./Logger"
+
 let input = ""
 for await (const chunk of Bun.stdin.stream()) {
   // chunk is Uint8Array
   // this converts it to text (assumes ASCII encoding)
   const chunkText = Buffer.from(chunk).toString()
   input += chunkText
-  console.log(`Chunk: ${chunkText}`)
+  Logger.debug(`Chunk: ${chunkText}`)
+
+  break
 }
 
 import {
@@ -22,4 +26,5 @@ const html = renderToString(<App ssrContent={ssrContent} />)
 // TODO: Turn off prev console logs
 // TODO: Always on server?
 
-console.log(`//---S//${html}//---E//`)
+const ssrOutput = `//---S//${html}//---E//`
+await Bun.write(Bun.stdout, ssrOutput)

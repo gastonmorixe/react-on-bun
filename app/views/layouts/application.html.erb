@@ -20,7 +20,13 @@
     <!-- react-ends -->
 
     <!-- bun-ssr-starts -->
-    <div id="react-app"><%= ssr_render("app/javascript/application-server.js") do %><p style='color: red'>hola amigos this is from ERB!</p><% end %></div>
+    <%= compress_html do %>
+      <div id="react-app">
+        <%= ssr_render("app/javascript/application-server.js") do %>
+          <p style='color: red'>Hello amigos this is from ERB!</p>
+        <% end %>
+      </div>
+    <% end %>
     <!-- bun-ssr-ends -->
   </body>
 </html>

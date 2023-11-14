@@ -11,6 +11,12 @@ require 'open3'
 # irb(main):047> appp.exec("finalee()")
 # => nil
 module JsHelper
+  def compress_html(&block)
+    content = capture(&block)
+    # content.gsub(/\s+/, ' ').strip.html_safe + "\n"
+    "#{content.gsub(/>\s+</, '><').strip.html_safe}\n".html_safe
+  end
+
   def ssr_render(file_path, &block)
     # source = File.read(File.expand_path(file_path, __FILE__))
 

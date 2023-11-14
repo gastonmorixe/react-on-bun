@@ -1,0 +1,86 @@
+# scripts to run before `bun run`-ing a file or script
+# register plugins by adding them to this list
+# preload = ["./preload.ts"]
+
+# jsx = "react"
+# jsxFactory = "h"
+# jsxFragment = "Fragment"
+# jsxImportSource = "react"
+
+# Reduce memory usage at the cost of performance
+# smol = true
+
+logLevel = "error" # "debug" | "warn" | "error"
+telemetry = false
+
+[define]
+# Replace any usage of "process.env.bagel" with the string `lox`.
+# The values are parsed as JSON, except single-quoted strings are supported and `'undefined'` becomes `undefined` in JS.
+# This will probably change in a future release to be just regular TOML instead. It is a holdover from the CLI argument parsing.
+# "process.env.bagel" = "'lox'"
+
+[loader]
+# when a .bagel file is imported, treat it like a tsx file
+# ".bagel" = "tsx"
+
+[test]
+# configuration goes here
+# root = "./__tests__"
+# preload = ["./setup.ts"]
+# smol = true
+# coverage = false
+# coverageThreshold = 0.9
+# coverageThreshold = { line = 0.7, function = 0.8, statement = 0.9 }
+# coverageSkipTestFiles = false
+
+[install]
+# configuration here
+# optional = true
+# dev = true
+# optional = true
+# production = false
+# exact = false
+# auto = "auto" # Resolve modules from local node_modules if it exists. Otherwise, auto-install dependencies on the fly.
+# "auto"	Resolve modules from local node_modules if it exists. Otherwise, auto-install dependencies on the fly.
+# "force"	Always auto-install dependencies, even if node_modules exists.
+# "disable"	Never auto-install dependencies.
+# "fallback"	Check local node_modules first, the auto-install any packages that aren't found. You can enable this from the CLI with bun -i.
+# frozenLockfile = false
+# dryRun = false
+# globalDir = "~/.bun/install/global"
+# globalBinDir = "~/.bun/bin"
+# set default registry as a string
+# registry = "https://registry.npmjs.org"
+# set a token
+# registry = { url = "https://registry.npmjs.org", token = "123456" }
+# set a username/password
+# registry = "https://username:password@registry.npmjs.org"
+
+[install.scopes]
+# registry as string
+# myorg = "https://username:password@registry.myorg.com/"
+
+# registry with username/password
+# you can reference environment variables
+# myorg = { username = "myusername", password = "$npm_password", url = "https://registry.myorg.com/" }
+
+# registry with token
+# myorg = { token = "$npm_token", url = "https://registry.myorg.com/" }
+
+[install.cache]
+# the directory to use for the cache
+# dir = "~/.bun/install/cache"
+
+# when true, don't load from the global cache.
+# Bun may still write to node_modules/.cache
+# disable = false
+
+# when true, always resolve the latest versions from the registry
+# disableManifest = false
+
+[install.lockfile]
+# save = true
+
+[install.lockfile]
+# print = "yarn"
+
